@@ -18,7 +18,6 @@ public class QuartzCalendars {
     @Column(name = "CALENDAR")
     private byte[] calendar;
 
-
     public String getSchedulerName() {
         return schedulerName;
     }
