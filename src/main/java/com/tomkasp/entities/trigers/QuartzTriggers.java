@@ -1,9 +1,6 @@
 package com.tomkasp.entities.trigers;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 
 @Entity(name = "QRTZ_TRIGGERS") @IdClass(QuartzTriggersId.class)
 public class QuartzTriggers {
@@ -56,8 +53,9 @@ public class QuartzTriggers {
     @Column(name = "MISFIRE_INSTR")
     private Integer misfireInstr;
 
+    @Lob
     @Column(name = "JOB_DATA")
-    private String jobDate;
+    private byte[] jobDate;
 
 
     public String getSchedulerName() {
@@ -180,11 +178,11 @@ public class QuartzTriggers {
         this.misfireInstr = misfireInstr;
     }
 
-    public String getJobDate() {
+    public byte[] getJobDate() {
         return jobDate;
     }
 
-    public void setJobDate(String jobDate) {
+    public void setJobDate(byte[] jobDate) {
         this.jobDate = jobDate;
     }
 }
