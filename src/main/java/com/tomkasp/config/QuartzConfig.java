@@ -2,6 +2,7 @@ package com.tomkasp.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -19,15 +20,14 @@ public class QuartzConfig {
 
     static final Logger LOG = LoggerFactory.getLogger(QuartzConfig.class);
 
-    private final DataSource dataSource;
-    private final PlatformTransactionManager transactionManager;
-    private final ApplicationContext applicationContext;
+    @Autowired
+    private DataSource dataSource;
 
-    public QuartzConfig(DataSource dataSource, PlatformTransactionManager transactionManager, ApplicationContext applicationContext) {
-        this.dataSource = dataSource;
-        this.transactionManager = transactionManager;
-        this.applicationContext = applicationContext;
-    }
+    @Autowired
+    PlatformTransactionManager transactionManager;
+
+    @Autowired
+    ApplicationContext applicationContext;
 
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean() {
