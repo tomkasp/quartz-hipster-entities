@@ -60,7 +60,7 @@ public class SchedulerState {
     @Override
     public String toString() {
         return "SchedulerState{" +
-                "schedulerName='" + schedulerName + '\'' +
+                "SCHEDULER_NAME='" + schedulerName + '\'' +
                 ", instanceName='" + instanceName + '\'' +
                 ", lastCheckInTime=" + lastCheckInTime +
                 ", checkinInterval=" + checkinInterval +

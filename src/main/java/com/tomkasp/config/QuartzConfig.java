@@ -18,7 +18,9 @@ import java.util.Properties;
 @Configuration
 public class QuartzConfig {
 
+    public static final String SCHEDULER_NAME = "quartzScheduler";
     static final Logger LOG = LoggerFactory.getLogger(QuartzConfig.class);
+
 
     @Autowired
     private DataSource dataSource;
@@ -37,6 +39,7 @@ public class QuartzConfig {
         schedulerFactoryBean.setDataSource(dataSource);
         schedulerFactoryBean.setTransactionManager(transactionManager);
         schedulerFactoryBean.setOverwriteExistingJobs(true);
+        schedulerFactoryBean.setSchedulerName(SCHEDULER_NAME);
 
         // Custom job factory of spring with DI support for @Autowired
         AutowiringSpringBeanJobFactory jobFactory = new AutowiringSpringBeanJobFactory();
