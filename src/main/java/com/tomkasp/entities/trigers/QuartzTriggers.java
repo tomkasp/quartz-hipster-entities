@@ -1,11 +1,14 @@
 package com.tomkasp.entities.trigers;
 
 import com.tomkasp.validation.ValidateString;
+import org.quartz.Trigger;
 
 import javax.persistence.*;
 
 @Entity(name = "QRTZ_TRIGGERS") @IdClass(QuartzTriggersId.class)
 public class QuartzTriggers {
+
+    private transient String test = Trigger.TriggerState.NONE.toString();
 
     @Id
     @Column(name = "SCHED_NAME")
@@ -37,7 +40,7 @@ public class QuartzTriggers {
     @Column(name = "PRIORITY")
     private Integer priority;
 
-    @ValidateString(acceptedValues = {"NORMAL"}, message = "Invalid trigger state")
+    @ValidateString(acceptedValues = { "NONE", "NORMAL", "PAUSED", "COMPLETE", "ERROR", "BLOCKED" }, message = "Invalid trigger state")
     @Column(name = "TRIGGER_STATE")
     private String triggerState;
 
