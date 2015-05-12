@@ -67,4 +67,31 @@ public class QuartzCronTriggers {
     public void setTimeZoneId(String timeZoneId) {
         this.timeZoneId = timeZoneId;
     }
+
+    public QuartzCronTriggers schedulerName(final String schedulerName) {
+        this.schedulerName = schedulerName;
+        return this;
+    }
+
+    public QuartzCronTriggers triggerName(final String triggerName) {
+        this.triggerName = triggerName;
+        return this;
+    }
+
+    public QuartzCronTriggers triggerGroup(final String triggerGroup) {
+        this.triggerGroup = triggerGroup;
+        return this;
+    }
+
+    public QuartzCronTriggers cronExpression(final String cronExpression) {
+        this.cronExpression = cronExpression;
+        return this;
+    }
+
+    public QuartzCronTriggers timeZoneId(final String timeZoneId) {
+        this.timeZoneId = timeZoneId;
+        return this;
+    }
+
+
 }
