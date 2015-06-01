@@ -5,6 +5,7 @@ import com.tomkasp.entities.SchedulerState;
 import com.tomkasp.repository.QuartzLocksRepository;
 import com.tomkasp.repository.SchedulerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,12 @@ public class SchedulerApi {
 
         List<SchedulerState> schedulers = schedulerRepository.findAll();
         return schedulers;
+    }
+
+    @RequestMapping(value = "/schedulers/{id}")
+    public SchedulerState getScheduler(@PathVariable String id) {
+        SchedulerState schedulerState = schedulerRepository.findOne(id);
+        return schedulerState;
     }
 
     @RequestMapping(value = "/locks", method = RequestMethod.GET)
