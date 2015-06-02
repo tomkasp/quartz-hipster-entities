@@ -1,5 +1,7 @@
 package com.tomkasp.entities;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,11 +11,12 @@ import java.math.BigInteger;
 
 @Entity
 @Table(name = "QRTZ_SCHEDULER_STATE")
+@Document(indexName="scheduler")
 public class SchedulerState {
 
     @Id
     @Column(name = "sched_name")
-    private String schedulerName;
+    private String id;
 
     @Column(name = "instance_name")
     private String instanceName;
@@ -25,12 +28,12 @@ public class SchedulerState {
     private BigInteger checkinInterval;
 
 
-    public String getSchedulerName() {
-        return schedulerName;
+    public String getId() {
+        return id;
     }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getInstanceName() {
@@ -60,7 +63,7 @@ public class SchedulerState {
     @Override
     public String toString() {
         return "SchedulerState{" +
-                "schedulerName='" + schedulerName + '\'' +
+                "id='" + id + '\'' +
                 ", instanceName='" + instanceName + '\'' +
                 ", lastCheckInTime=" + lastCheckInTime +
                 ", checkinInterval=" + checkinInterval +
