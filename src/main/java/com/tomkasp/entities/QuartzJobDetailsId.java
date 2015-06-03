@@ -31,4 +31,21 @@ public class QuartzJobDetailsId implements Serializable {
     public void setJobGroup(String jobGroup) {
         this.jobGroup = jobGroup;
     }
+
+    public QuartzJobDetailsId schedulerName(final String schedulerName) {
+        this.schedulerName = schedulerName;
+        return this;
+    }
+
+    public QuartzJobDetailsId jobName(final String jobName) {
+        this.jobName = jobName;
+        return this;
+    }
+
+    public QuartzJobDetailsId jobGroup(final String jobGroup) {
+        this.jobGroup = jobGroup;
+        return this;
+    }
+
+
 }
