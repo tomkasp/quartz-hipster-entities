@@ -10,6 +10,7 @@ import com.tomkasp.repository.QuartzSimpleTriggerRepository;
 import com.tomkasp.repository.QuartzTriggersRepository;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,6 +50,12 @@ public class Triggers {
     @RequestMapping(value = "/cron", method = RequestMethod.GET)
     public List<QuartzCronTriggers> getAllCronTriggers() {
         return quartzCronTriggersRepository.findAll();
+    }
+
+    @RequestMapping(value = "/cron/{scheduler}/{triggergroup/{triggername}/{cronexpression}/{timezoneid}}")
+    public QuartzCronTriggers getQuartzTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggername, @PathVariable String cronexpression, @PathVariable String timezoneid){
+
+        return null;
     }
 
 
