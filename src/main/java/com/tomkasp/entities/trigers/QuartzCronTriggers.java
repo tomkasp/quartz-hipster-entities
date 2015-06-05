@@ -20,11 +20,9 @@ public class QuartzCronTriggers {
     @Column(name = "TRIGGER_GROUP")
     private String triggerGroup;
 
-    @Id
     @Column(name = "CRON_EXPRESSION")
     private String cronExpression;
 
-    @Id
     @Column(name = "TIME_ZONE_ID")
     private String timeZoneId;
 

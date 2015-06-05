@@ -1,9 +1,6 @@
 package com.tomkasp.api;
 
-import com.tomkasp.entities.trigers.QuartzCronTriggers;
-import com.tomkasp.entities.trigers.QuartzFiredTriggers;
-import com.tomkasp.entities.trigers.QuartzSimpleTriggers;
-import com.tomkasp.entities.trigers.QuartzTriggers;
+import com.tomkasp.entities.trigers.*;
 import com.tomkasp.repository.QuartzCronTriggersRepository;
 import com.tomkasp.repository.QuartzFiredTriggersRepository;
 import com.tomkasp.repository.QuartzSimpleTriggerRepository;
@@ -52,12 +49,14 @@ public class Triggers {
         return quartzCronTriggersRepository.findAll();
     }
 
-    @RequestMapping(value = "/cron/{scheduler}/{triggergroup/{triggername}/{cronexpression}/{timezoneid}}")
-    public QuartzCronTriggers getQuartzTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggername, @PathVariable String cronexpression, @PathVariable String timezoneid){
-
-        return null;
+    @RequestMapping(value = "/cron/{scheduler}/{triggergroup}/{triggername}}", method = RequestMethod.GET)
+    public QuartzCronTriggers getQuartzTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggername) {
+        return quartzCronTriggersRepository.findOne(
+                new QuartzTriggersId()
+                        .schedulerName(scheduler)
+                        .triggerGroup(triggergroup)
+                        .triggerName(triggername));
     }
-
 
     @RequestMapping(value = "/simple", method = RequestMethod.GET)
     public List<QuartzSimpleTriggers> getAllSimpleTriggers() {

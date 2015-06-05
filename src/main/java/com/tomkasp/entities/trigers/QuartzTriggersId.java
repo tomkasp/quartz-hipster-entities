@@ -9,6 +9,20 @@ public class QuartzTriggersId implements Serializable{
     private String triggerName;
     private String triggerGroup;
 
+    public QuartzTriggersId schedulerName(final String schedulerName) {
+        this.schedulerName = schedulerName;
+        return this;
+    }
+
+    public QuartzTriggersId triggerName(final String triggerName) {
+        this.triggerName = triggerName;
+        return this;
+    }
+
+    public QuartzTriggersId triggerGroup(final String triggerGroup) {
+        this.triggerGroup = triggerGroup;
+        return this;
+    }
 
     public String getSchedulerName() {
         return schedulerName;
