@@ -63,6 +63,16 @@ public class Triggers {
         return quartzSimpleTriggerRepository.findAll();
     }
 
+    @RequestMapping(value = "/simple/{scheduler}/{triggergroup/{triggername}}", method = RequestMethod.GET)
+    public QuartzSimpleTriggers getSimpleTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName){
+        return quartzSimpleTriggerRepository.findOne(
+                new QuartzTriggersId()
+                .schedulerName(scheduler)
+                .triggerGroup(triggergroup)
+                .triggerName(triggerName)
+        );
+    }
+
     @RequestMapping(value = "/blob", method = RequestMethod.GET)
     public String getAllBlob()
 
