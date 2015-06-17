@@ -49,7 +49,7 @@ public class Triggers {
         return quartzCronTriggersRepository.findAll();
     }
 
-    @RequestMapping(value = "/cron/{scheduler}/{triggergroup}/{triggername}}", method = RequestMethod.GET)
+    @RequestMapping(value = "/cron/{scheduler}/{triggergroup}/{triggername}", method = RequestMethod.GET)
     public QuartzCronTriggers getQuartzTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggername) {
         return quartzCronTriggersRepository.findOne(
                 new QuartzTriggersId()
