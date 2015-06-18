@@ -3,10 +3,7 @@ package com.tomkasp.api;
 import com.tomkasp.entities.QuartzJobDetails;
 import com.tomkasp.entities.QuartzJobDetailsId;
 import com.tomkasp.repository.QuartzJobDetailsRepository;
-import org.quartz.JobDetail;
-import org.quartz.JobKey;
 import org.quartz.SchedulerException;
-import org.quartz.impl.StdScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +17,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/quartz/jobs")
-public class Jobs {
+public class JobsApi {
 
-    static final Logger LOG = LoggerFactory.getLogger(Jobs.class);
+    static final Logger LOG = LoggerFactory.getLogger(JobsApi.class);
 
     private final QuartzJobDetailsRepository quartzJobDetailsRepository;
-    private final ApplicationContext applicationContext;
 
     @Autowired
-    public Jobs(QuartzJobDetailsRepository quartzJobDetailsRepository, ApplicationContext applicationContext) {
+    public JobsApi(QuartzJobDetailsRepository quartzJobDetailsRepository) {
         this.quartzJobDetailsRepository = quartzJobDetailsRepository;
-        this.applicationContext = applicationContext;
     }
 
     @RequestMapping(method = RequestMethod.GET)

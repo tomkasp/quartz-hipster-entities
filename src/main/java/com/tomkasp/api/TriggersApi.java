@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/quartz/triggers")
-public class Triggers {
+public class TriggersApi {
 
     private final QuartzFiredTriggersRepository quartzFiredTriggersRepository;
     private final QuartzTriggersRepository quartzTriggersRepository;
@@ -24,7 +24,7 @@ public class Triggers {
     private final QuartzSimpleTriggerRepository quartzSimpleTriggerRepository;
 
     @Autowired
-    public Triggers(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzTriggersRepository quartzTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository) {
+    public TriggersApi(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzTriggersRepository quartzTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository) {
         this.quartzFiredTriggersRepository = quartzFiredTriggersRepository;
         this.quartzTriggersRepository = quartzTriggersRepository;
         this.quartzCronTriggersRepository = quartzCronTriggersRepository;

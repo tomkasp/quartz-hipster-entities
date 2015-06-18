@@ -18,9 +18,10 @@ import java.util.Properties;
 @Configuration
 public class QuartzConfig {
 
+
+    //TODO move quartz scheduler name to external property
     public static final String SCHEDULER_NAME = "quartzScheduler";
     static final Logger LOG = LoggerFactory.getLogger(QuartzConfig.class);
-
 
     @Autowired
     private DataSource dataSource;

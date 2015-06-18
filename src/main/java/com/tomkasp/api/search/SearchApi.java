@@ -26,5 +26,4 @@ public class SearchApi {
         schedulerRepository.findOne(q);
         return null;
     }
-
 }
