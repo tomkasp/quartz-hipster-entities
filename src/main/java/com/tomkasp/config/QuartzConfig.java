@@ -1,5 +1,6 @@
 package com.tomkasp.config;
 
+import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,8 @@ public class QuartzConfig implements EnvironmentAware{
 
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean() {
-        if(propertyResolver.getProperty("scheduler.name") == null){
+        String schedulerName = propertyResolver.getProperty("scheduler.name");
+        if(Strings.isNullOrEmpty(schedulerName)){
             throw new ApplicationContextException("Scheduler name needs to be specified as a property org.quartz.scheduler.name");
         }
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
@@ -55,7 +57,7 @@ public class QuartzConfig implements EnvironmentAware{
         schedulerFactoryBean.setTransactionManager(transactionManager);
         schedulerFactoryBean.setOverwriteExistingJobs(true);
 
-        schedulerFactoryBean.setSchedulerName(SCHEDULER_NAME);
+        schedulerFactoryBean.setSchedulerName(schedulerName);
 
         // Custom job factory of spring with DI support for @Autowired
         AutowiringSpringBeanJobFactory jobFactory = new AutowiringSpringBeanJobFactory();
