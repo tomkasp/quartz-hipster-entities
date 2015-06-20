@@ -6,17 +6,20 @@ import com.tomkasp.repository.QuartzFiredTriggersRepository;
 import com.tomkasp.repository.QuartzSimpleTriggerRepository;
 import com.tomkasp.repository.QuartzTriggersRepository;
 import com.wordnik.swagger.annotations.ApiOperation;
+import org.quartz.SchedulerException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/quartz/triggers")
 public class TriggersEntityApi {
+
+    static final Logger LOG = LoggerFactory.getLogger(TriggersEntityApi.class);
 
     private final QuartzFiredTriggersRepository quartzFiredTriggersRepository;
     private final QuartzTriggersRepository quartzTriggersRepository;
@@ -43,10 +46,15 @@ public class TriggersEntityApi {
         return quartzFiredTriggersRepository.findAll();
     }
 
-
     @RequestMapping(value = "/cron", method = RequestMethod.GET)
     public List<QuartzCronTriggers> getAllCronTriggers() {
         return quartzCronTriggersRepository.findAll();
+    }
+
+    @RequestMapping(value = "/cron", method = RequestMethod.POST)
+    public void createCronTrigger(@RequestBody QuartzCronTriggers quartzCronTriggers) throws SchedulerException, ParseException {
+        LOG.debug("Attempt to create cron trigger {}", quartzCronTriggers);
+        quartzCronTriggersRepository.save(quartzCronTriggers);
     }
 
     @RequestMapping(value = "/cron/{scheduler}/{triggergroup}/{triggername}", method = RequestMethod.GET)
@@ -64,12 +72,12 @@ public class TriggersEntityApi {
     }
 
     @RequestMapping(value = "/simple/{scheduler}/{triggergroup/{triggername}}", method = RequestMethod.GET)
-    public QuartzSimpleTriggers getSimpleTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName){
+    public QuartzSimpleTriggers getSimpleTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName) {
         return quartzSimpleTriggerRepository.findOne(
                 new QuartzTriggersId()
-                .schedulerName(scheduler)
-                .triggerGroup(triggergroup)
-                .triggerName(triggerName)
+                        .schedulerName(scheduler)
+                        .triggerGroup(triggergroup)
+                        .triggerName(triggerName)
         );
     }
 
