@@ -7,7 +7,7 @@ Main purpose of this simple, small library is to make your life easier when it c
 Main functionality of it can be divided into 3 different sections. Let me explain all of them.
  
 1. First under entities package there are defined all tables which quartz framework uses. 
-   You can reused them or access through CrudRepositories from a repository package. 
+   You can reuse them or access through CrudRepositories from a repository package. 
    
 2. Library contains pre defined quartz configuration inside QuzrtzConifg class. You just need to add jar file with 
    library and you have SchedulerFactoryBean inside your Spring context. 
@@ -18,7 +18,13 @@ Main functionality of it can be divided into 3 different sections. Let me explai
 Ok, but how to use it? 
 
 You just need to add library as a dependency and basically that's it. When it is a dependency to your project spring will
-automatically tire to scan CLASSPATH and and create all entities with quartz tables and beans defined inside 
+automatically try to scan CLASSPATH and and create all entities with quartz tables and beans defined inside 
 com.tomkasp.config.QuartzConfig Your project needs to have only quartz.properties file with quartz configuration and 
-somewhere inside your project you also need to define a property org.quartz.scheduler.name
+somewhere inside your project you also need to define a property org.quartz.scheduler.name 
+
+Few more worlds of explanation. 
+
+I used spring boot as a kind of template for the app. I leverage mainly spring starters from the boot project. Under package 
+com.tomkasp.repository you can find repositories created for the defined entities. If you would like to now how it works 
+you can read it here: http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
 
