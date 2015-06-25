@@ -46,6 +46,11 @@ public class TriggersEntityApi {
         return quartzFiredTriggersRepository.findAll();
     }
 
+    @RequestMapping(value = "/fired/{schedulername}/{entryid}")
+    public QuartzFiredTriggers getFiredTrigger(@RequestParam String schedulerName, @RequestParam String entryid){
+        return quartzFiredTriggersRepository.findOne(new QuartzFiredTriggersId().schedulerName(schedulerName).entryId(entryid));
+    }
+
     @RequestMapping(value = "/cron", method = RequestMethod.GET)
     public List<QuartzCronTriggers> getAllCronTriggers() {
         return quartzCronTriggersRepository.findAll();

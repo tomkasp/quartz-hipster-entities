@@ -23,4 +23,16 @@ public class QuartzFiredTriggersId implements Serializable{
     public void setEntryId(String entryId) {
         this.entryId = entryId;
     }
+
+    public QuartzFiredTriggersId schedulerName(final String schedulerName) {
+        this.schedulerName = schedulerName;
+        return this;
+    }
+
+    public QuartzFiredTriggersId entryId(final String entryId) {
+        this.entryId = entryId;
+        return this;
+    }
+
+
 }
