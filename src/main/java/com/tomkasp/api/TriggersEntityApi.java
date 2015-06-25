@@ -1,10 +1,7 @@
 package com.tomkasp.api;
 
 import com.tomkasp.entities.trigers.*;
-import com.tomkasp.repository.QuartzCronTriggersRepository;
-import com.tomkasp.repository.QuartzFiredTriggersRepository;
-import com.tomkasp.repository.QuartzSimpleTriggerRepository;
-import com.tomkasp.repository.QuartzTriggersRepository;
+import com.tomkasp.repository.*;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
@@ -25,13 +22,15 @@ public class TriggersEntityApi {
     private final QuartzTriggersRepository quartzTriggersRepository;
     private final QuartzCronTriggersRepository quartzCronTriggersRepository;
     private final QuartzSimpleTriggerRepository quartzSimpleTriggerRepository;
+    private final QuartzBlobTriggerRepository quartzBlobTriggerRepository;
 
     @Autowired
-    public TriggersEntityApi(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzTriggersRepository quartzTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository) {
+    public TriggersEntityApi(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzTriggersRepository quartzTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository, QuartzBlobTriggerRepository quartzBlobTriggerRepository) {
         this.quartzFiredTriggersRepository = quartzFiredTriggersRepository;
         this.quartzTriggersRepository = quartzTriggersRepository;
         this.quartzCronTriggersRepository = quartzCronTriggersRepository;
         this.quartzSimpleTriggerRepository = quartzSimpleTriggerRepository;
+        this.quartzBlobTriggerRepository = quartzBlobTriggerRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -87,9 +86,8 @@ public class TriggersEntityApi {
     }
 
     @RequestMapping(value = "/blob", method = RequestMethod.GET)
-    public String getAllBlob()
-
+    public List<QuartzBlobTriggers> getAllBlobTriggers()
     {
-        return "";
+        return quartzBlobTriggerRepository.findAll();
     }
 }

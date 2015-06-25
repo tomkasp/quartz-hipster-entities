@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class QuartzPausedTriggersId implements Serializable{
 
     private String schedulerName;
-    private String triggerGroup;
+    private String triggerGroup; 
 
 
     public String getSchedulerName() {
