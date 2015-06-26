@@ -93,6 +93,6 @@ public class TriggersEntityApi {
 
     @RequestMapping(value = "/blob/{scheduler}/{triggergroup/{triggername}", method = RequestMethod.GET)
     public QuartzBlobTriggers getBlobTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName){
-        return quartzBlobTriggerRepository.findOne(new QuartzTriggersId().schedulerName(scheduler).triggerGroup(triggergroup).triggerName(triggerName))
+        return quartzBlobTriggerRepository.findOne(new QuartzTriggersId().schedulerName(scheduler).triggerGroup(triggergroup).triggerName(triggerName));
     }
 }
