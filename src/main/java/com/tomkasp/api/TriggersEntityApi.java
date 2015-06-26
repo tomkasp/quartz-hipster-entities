@@ -75,7 +75,7 @@ public class TriggersEntityApi {
         return quartzSimpleTriggerRepository.findAll();
     }
 
-    @RequestMapping(value = "/simple/{scheduler}/{triggergroup/{triggername}}", method = RequestMethod.GET)
+    @RequestMapping(value = "/simple/{scheduler}/{triggergroup/{triggername}", method = RequestMethod.GET)
     public QuartzSimpleTriggers getSimpleTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName) {
         return quartzSimpleTriggerRepository.findOne(
                 new QuartzTriggersId()
@@ -89,5 +89,10 @@ public class TriggersEntityApi {
     public List<QuartzBlobTriggers> getAllBlobTriggers()
     {
         return quartzBlobTriggerRepository.findAll();
+    }
+
+    @RequestMapping(value = "/blob/{scheduler}/{triggergroup/{triggername}", method = RequestMethod.GET)
+    public QuartzBlobTriggers getBlobTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName){
+        return quartzBlobTriggerRepository.findOne(new QuartzTriggersId().schedulerName(scheduler).triggerGroup(triggergroup).triggerName(triggerName))
     }
 }
