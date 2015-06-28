@@ -23,14 +23,16 @@ public class TriggersEntityApi {
     private final QuartzCronTriggersRepository quartzCronTriggersRepository;
     private final QuartzSimpleTriggerRepository quartzSimpleTriggerRepository;
     private final QuartzBlobTriggerRepository quartzBlobTriggerRepository;
+    private final QuartzPausedTriggersRepository quartzPausedTriggersRepository;
 
     @Autowired
-    public TriggersEntityApi(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzTriggersRepository quartzTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository, QuartzBlobTriggerRepository quartzBlobTriggerRepository) {
+    public TriggersEntityApi(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzTriggersRepository quartzTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository, QuartzBlobTriggerRepository quartzBlobTriggerRepository, QuartzPausedTriggersRepository quartzPausedTriggersRepository) {
         this.quartzFiredTriggersRepository = quartzFiredTriggersRepository;
         this.quartzTriggersRepository = quartzTriggersRepository;
         this.quartzCronTriggersRepository = quartzCronTriggersRepository;
         this.quartzSimpleTriggerRepository = quartzSimpleTriggerRepository;
         this.quartzBlobTriggerRepository = quartzBlobTriggerRepository;
+        this.quartzPausedTriggersRepository = quartzPausedTriggersRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -94,5 +96,9 @@ public class TriggersEntityApi {
     @RequestMapping(value = "/blob/{scheduler}/{triggergroup/{triggername}", method = RequestMethod.GET)
     public QuartzBlobTriggers getBlobTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName){
         return quartzBlobTriggerRepository.findOne(new QuartzTriggersId().schedulerName(scheduler).triggerGroup(triggergroup).triggerName(triggerName));
+    }
+
+    public List<QuartzPausedTriggers> getAllPausedJobs(){
+        return quartzPausedTriggersRepository.findAll();
     }
 }
