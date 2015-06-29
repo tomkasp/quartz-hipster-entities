@@ -98,7 +98,15 @@ public class TriggersEntityApi {
         return quartzBlobTriggerRepository.findOne(new QuartzTriggersId().schedulerName(scheduler).triggerGroup(triggergroup).triggerName(triggerName));
     }
 
+    @RequestMapping(value = "/paused", method = RequestMethod.GET)
     public List<QuartzPausedTriggers> getAllPausedJobs(){
         return quartzPausedTriggersRepository.findAll();
     }
+
+    @RequestMapping(value = "/paused/{scheduler}/{triggergroup}", method = RequestMethod.GET)
+    public QuartzPausedTriggers getBlobTrigger(@PathVariable String scheduler,  @PathVariable String triggergroup){
+        return quartzPausedTriggersRepository.findOne(new QuartzPausedTriggersId().schedulerName(scheduler).triggerGroup(triggergroup));
+    }
+
+
 }

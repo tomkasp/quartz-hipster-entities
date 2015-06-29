@@ -24,4 +24,16 @@ public class QuartzPausedTriggersId implements Serializable{
     public void setTriggerGroup(String triggerGroup) {
         this.triggerGroup = triggerGroup;
     }
+
+    public QuartzPausedTriggersId schedulerName(final String schedulerName) {
+        this.schedulerName = schedulerName;
+        return this;
+    }
+
+    public QuartzPausedTriggersId triggerGroup(final String triggerGroup) {
+        this.triggerGroup = triggerGroup;
+        return this;
+    }
+
+
 }

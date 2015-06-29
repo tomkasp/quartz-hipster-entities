@@ -33,11 +33,3 @@ public class QuartzPausedTriggers {
         this.triggerGroup = triggerGroup;
     }
 }
-
-
-
-
-//CREATE TABLE QRTZ_PAUSED_TRIGGER_GRPS (
-//        SCHED_NAME VARCHAR(120) NOT NULL,
-//    TRIGGER_GROUP VARCHAR (200)  NOT NULL
-//);
