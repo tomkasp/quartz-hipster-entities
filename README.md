@@ -22,9 +22,19 @@ automatically try to scan CLASSPATH and and create all entities with quartz tabl
 com.tomkasp.config.QuartzConfig Your project needs to have only quartz.properties file with quartz configuration and 
 somewhere inside your project you also need to define a property org.quartz.scheduler.name 
 
-Few more worlds of explanation. 
+Few more words of explanation. 
 
 I used spring boot as a kind of template for the app. I leverage mainly spring starters from the boot project. Under package 
 com.tomkasp.repository you can find repositories created for the defined entities. If you would like to now how it works 
 you can read it here: http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
+
+
+## What is next?
+
+If you want to add something more you can play a little bit with spring data rest project and add 
+@RepositoryRestResource annotation on top of the repositories. More details you can find here:
+http://spring.io/guides/gs/accessing-data-rest/ 
+
+
+
 

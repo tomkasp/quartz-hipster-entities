@@ -107,6 +107,4 @@ public class TriggersEntityApi {
     public QuartzPausedTriggers getBlobTrigger(@PathVariable String scheduler,  @PathVariable String triggergroup){
         return quartzPausedTriggersRepository.findOne(new QuartzPausedTriggersId().schedulerName(scheduler).triggerGroup(triggergroup));
     }
-
-
 }
