@@ -1,6 +1,8 @@
 package com.tomkasp.entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +13,9 @@ import java.math.BigInteger;
 
 @Entity
 @Table(name = "QRTZ_SCHEDULER_STATE")
-@Document(indexName="scheduler")
-public class SchedulerState {
+@Document(indexName = "scheduler")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
+public class SchedulerState extends ResourceSupport {
 
     @Id
     @Column(name = "sched_name")
@@ -26,39 +29,6 @@ public class SchedulerState {
 
     @Column(name = "checkin_interval")
     private BigInteger checkinInterval;
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getInstanceName() {
-        return instanceName;
-    }
-
-    public void setInstanceName(String instanceName) {
-        this.instanceName = instanceName;
-    }
-
-    public BigInteger getLastCheckInTime() {
-        return lastCheckInTime;
-    }
-
-    public void setLastCheckInTime(BigInteger lastCheckInTime) {
-        this.lastCheckInTime = lastCheckInTime;
-    }
-
-    public BigInteger getCheckinInterval() {
-        return checkinInterval;
-    }
-
-    public void setCheckinInterval(BigInteger checkinInterval) {
-        this.checkinInterval = checkinInterval;
-    }
 
     @Override
     public String toString() {
