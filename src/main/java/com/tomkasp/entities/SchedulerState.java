@@ -19,7 +19,7 @@ public class SchedulerState extends ResourceSupport {
 
     @Id
     @Column(name = "sched_name")
-    private String id;
+    private String schedulerName;
 
     @Column(name = "instance_name")
     private String instanceName;
@@ -33,7 +33,7 @@ public class SchedulerState extends ResourceSupport {
     @Override
     public String toString() {
         return "SchedulerState{" +
-                "id='" + id + '\'' +
+                "schedulerName='" + schedulerName + '\'' +
                 ", instanceName='" + instanceName + '\'' +
                 ", lastCheckInTime=" + lastCheckInTime +
                 ", checkinInterval=" + checkinInterval +
