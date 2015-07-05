@@ -1,5 +1,7 @@
 package com.tomkasp.entities.trigers;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +9,7 @@ import javax.persistence.IdClass;
 
 @Entity(name = "QRTZ_PAUSED_TRIGGER_GRPS")
 @IdClass(QuartzPausedTriggersId.class)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class QuartzPausedTriggers {
 
     @Id
@@ -17,19 +20,4 @@ public class QuartzPausedTriggers {
     @Column(name = "TRIGGER_GROUP")
     private String triggerGroup;
 
-    public String getSchedulerName() {
-        return schedulerName;
-    }
-
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getTriggerGroup() {
-        return triggerGroup;
-    }
-
-    public void setTriggerGroup(String triggerGroup) {
-        this.triggerGroup = triggerGroup;
-    }
 }

@@ -1,5 +1,7 @@
 package com.tomkasp.entities.trigers;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +9,7 @@ import javax.persistence.IdClass;
 
 @Entity(name = "QRTZ_SIMPLE_TRIGGERS")
 @IdClass(QuartzTriggersId.class)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class QuartzSimpleTriggers {
 
     @Id
@@ -30,52 +33,4 @@ public class QuartzSimpleTriggers {
     @Column(name = "TIMES_TRIGGERED")
     private Long timesTriggered;
 
-
-    public String getSchedulerName() {
-        return schedulerName;
-    }
-
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getTriggerName() {
-        return triggerName;
-    }
-
-    public void setTriggerName(String triggerName) {
-        this.triggerName = triggerName;
-    }
-
-    public String getTriggerGroup() {
-        return triggerGroup;
-    }
-
-    public void setTriggerGroup(String triggerGroup) {
-        this.triggerGroup = triggerGroup;
-    }
-
-    public Long getRepeatCount() {
-        return repeatCount;
-    }
-
-    public void setRepeatCount(Long repeatCount) {
-        this.repeatCount = repeatCount;
-    }
-
-    public Long getRepeatInterval() {
-        return repeatInterval;
-    }
-
-    public void setRepeatInterval(Long repeatInterval) {
-        this.repeatInterval = repeatInterval;
-    }
-
-    public Long getTimesTriggered() {
-        return timesTriggered;
-    }
-
-    public void setTimesTriggered(Long timesTriggered) {
-        this.timesTriggered = timesTriggered;
-    }
 }
