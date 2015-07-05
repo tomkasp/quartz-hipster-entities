@@ -42,6 +42,11 @@ public class SchedulerApi {
     public ResponseEntity getScheduler(@PathVariable String id) {
         SchedulerState schedulerState = schedulerRepository.findOne(id);
         schedulerState.add(linkTo(methodOn(SchedulerApi.class).getScheduler(id)).withSelfRel());
+        schedulerState.add(linkTo(methodOn(TriggersEntityApi.class).getAllFiredTriggers()).withRel("Fired triggers"));
+        schedulerState.add(linkTo(methodOn(TriggersEntityApi.class).getAllBlobTriggers()).withRel("Blog triggers"));
+        schedulerState.add(linkTo(methodOn(TriggersEntityApi.class).getAllCronTriggers()).withRel("Cron triggers"));
+        schedulerState.add(linkTo(methodOn(TriggersEntityApi.class).getAllSimpleTriggers()).withRel("Simple triggers"));
+        schedulerState.add(linkTo(methodOn(TriggersEntityApi.class).getAllTriggers()).withRel("All triggers"));
         return new ResponseEntity<SchedulerState>(schedulerState, HttpStatus.OK);
     }
 

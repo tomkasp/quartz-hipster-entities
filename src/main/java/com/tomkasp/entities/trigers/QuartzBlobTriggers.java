@@ -1,9 +1,12 @@
 package com.tomkasp.entities.trigers;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.*;
 
 @Entity(name = "QRTZ_BLOB_TRIGGERS")
 @IdClass(QuartzTriggersId.class)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class QuartzBlobTriggers {
 
     @Id
@@ -20,37 +23,6 @@ public class QuartzBlobTriggers {
     @Column(name = "BLOB_DATA")
     private String blobData;
 
-    public String getSchedulerName() {
-        return schedulerName;
-    }
-
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getTriggerName() {
-        return triggerName;
-    }
-
-    public void setTriggerName(String triggerName) {
-        this.triggerName = triggerName;
-    }
-
-    public String getTriggerGroup() {
-        return triggerGroup;
-    }
-
-    public void setTriggerGroup(String triggerGroup) {
-        this.triggerGroup = triggerGroup;
-    }
-
-    public String getBlobData() {
-        return blobData;
-    }
-
-    public void setBlobData(String blobData) {
-        this.blobData = blobData;
-    }
 }
 
 

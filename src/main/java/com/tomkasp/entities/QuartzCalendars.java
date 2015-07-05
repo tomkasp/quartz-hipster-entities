@@ -1,9 +1,12 @@
 package com.tomkasp.entities;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.*;
 
 @Entity(name = "QRTZ_CALENDARS")
 @IdClass(QuartzCalendarsId.class)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class QuartzCalendars {
 
     @Id
@@ -18,27 +21,5 @@ public class QuartzCalendars {
     @Column(name = "CALENDAR")
     private byte[] calendar;
 
-    public String getSchedulerName() {
-        return schedulerName;
-    }
 
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getCalendarName() {
-        return calendarName;
-    }
-
-    public void setCalendarName(String calendarName) {
-        this.calendarName = calendarName;
-    }
-
-    public byte[] getCalendar() {
-        return calendar;
-    }
-
-    public void setCalendar(byte[] calendar) {
-        this.calendar = calendar;
-    }
 }
