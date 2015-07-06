@@ -45,7 +45,6 @@ public class JobsApi {
         final QuartzJobDetails quartzJobDetails = quartzJobDetailsRepository.findOne(new QuartzJobDetailsId().schedulerName(schedulerName).jobGroup(jobgroup).jobName(jobname));
         quartzJobDetails.add(linkTo(methodOn(JobsApi.class).getJob(schedulerName, jobgroup, jobname)).withSelfRel());
         quartzJobDetails.add(linkTo(methodOn(SchedulerApi.class).getScheduler(schedulerName)).withRel("Job Scheduler reference"));
-
         return new ResponseEntity<QuartzJobDetails>(quartzJobDetails, HttpStatus.OK);
     }
 }

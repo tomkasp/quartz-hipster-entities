@@ -35,11 +35,7 @@ public class TriggersEntityApi {
         this.quartzPausedTriggersRepository = quartzPausedTriggersRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<QuartzTriggers> getAllTriggers() {
-        List<QuartzTriggers> quartzTriggers = quartzTriggersRepository.findAll();
-        return quartzTriggers;
-    }
+
 
     @ApiOperation(value = "Currently running trigger")
     @RequestMapping(value = "/fired", method = RequestMethod.GET)
@@ -48,7 +44,7 @@ public class TriggersEntityApi {
     }
 
     @RequestMapping(value = "/fired/{schedulername}/{entryid}")
-    public QuartzFiredTriggers getFiredTrigger(@RequestParam String schedulerName, @RequestParam String entryid){
+    public QuartzFiredTriggers getFiredTrigger(@RequestParam String schedulerName, @RequestParam String entryid) {
         return quartzFiredTriggersRepository.findOne(new QuartzFiredTriggersId().schedulerName(schedulerName).entryId(entryid));
     }
 
@@ -64,7 +60,7 @@ public class TriggersEntityApi {
     }
 
     @RequestMapping(value = "/cron/{scheduler}/{triggergroup}/{triggername}", method = RequestMethod.GET)
-    public QuartzCronTriggers getQuartzTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggername) {
+    public QuartzCronTriggers getQuartzCronTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggername) {
         return quartzCronTriggersRepository.findOne(
                 new QuartzTriggersId()
                         .schedulerName(scheduler)
@@ -88,23 +84,22 @@ public class TriggersEntityApi {
     }
 
     @RequestMapping(value = "/blob", method = RequestMethod.GET)
-    public List<QuartzBlobTriggers> getAllBlobTriggers()
-    {
+    public List<QuartzBlobTriggers> getAllBlobTriggers() {
         return quartzBlobTriggerRepository.findAll();
     }
 
     @RequestMapping(value = "/blob/{scheduler}/{triggergroup/{triggername}", method = RequestMethod.GET)
-    public QuartzBlobTriggers getBlobTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName){
+    public QuartzBlobTriggers getBlobTrigger(@PathVariable String scheduler, @PathVariable String triggergroup, @PathVariable String triggerName) {
         return quartzBlobTriggerRepository.findOne(new QuartzTriggersId().schedulerName(scheduler).triggerGroup(triggergroup).triggerName(triggerName));
     }
 
     @RequestMapping(value = "/paused", method = RequestMethod.GET)
-    public List<QuartzPausedTriggers> getAllPausedJobs(){
+    public List<QuartzPausedTriggers> getAllPausedJobs() {
         return quartzPausedTriggersRepository.findAll();
     }
 
     @RequestMapping(value = "/paused/{scheduler}/{triggergroup}", method = RequestMethod.GET)
-    public QuartzPausedTriggers getBlobTrigger(@PathVariable String scheduler,  @PathVariable String triggergroup){
+    public QuartzPausedTriggers getBlobTrigger(@PathVariable String scheduler, @PathVariable String triggergroup) {
         return quartzPausedTriggersRepository.findOne(new QuartzPausedTriggersId().schedulerName(scheduler).triggerGroup(triggergroup));
     }
 }

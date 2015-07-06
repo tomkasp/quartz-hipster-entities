@@ -1,14 +1,15 @@
 package com.tomkasp.entities.trigers;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.tomkasp.validation.ValidateString;
-import org.quartz.Trigger;
+import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.*;
 
-@Entity(name = "QRTZ_TRIGGERS") @IdClass(QuartzTriggersId.class)
-public class QuartzTriggers {
-
-    private transient String test = Trigger.TriggerState.NONE.toString();
+@Entity(name = "QRTZ_TRIGGERS")
+@IdClass(QuartzTriggersId.class)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE, setterVisibility = JsonAutoDetect.Visibility.NONE)
+public class QuartzTriggers extends ResourceSupport {
 
     @Id
     @Column(name = "SCHED_NAME")
@@ -32,15 +33,15 @@ public class QuartzTriggers {
     private String description;
 
     @Column(name = "NEXT_FIRE_TIME")
-    private Long   nextFireTime;
+    private Long nextFireTime;
 
     @Column(name = "PREV_FIRE_TIME")
-    private Long   prevFireTime;
+    private Long prevFireTime;
 
     @Column(name = "PRIORITY")
     private Integer priority;
 
-    @ValidateString(acceptedValues = { "NONE", "NORMAL", "PAUSED", "COMPLETE", "ERROR", "BLOCKED" }, message = "Invalid trigger state")
+    @ValidateString(acceptedValues = {"NONE", "NORMAL", "PAUSED", "COMPLETE", "ERROR", "BLOCKED"}, message = "Invalid trigger state")
     @Column(name = "TRIGGER_STATE")
     private String triggerState;
 
@@ -63,6 +64,7 @@ public class QuartzTriggers {
     @Column(name = "JOB_DATA")
     private byte[] jobDate;
 
+
     public QuartzTriggers schedulerName(final String schedulerName) {
         this.schedulerName = schedulerName;
         return this;
@@ -78,11 +80,6 @@ public class QuartzTriggers {
         return this;
     }
 
-    public QuartzTriggers description(final String description) {
-        this.description = description;
-        return this;
-    }
-
     public QuartzTriggers jobName(final String jobName) {
         this.jobName = jobName;
         return this;
@@ -90,6 +87,26 @@ public class QuartzTriggers {
 
     public QuartzTriggers jobGroup(final String jobGroup) {
         this.jobGroup = jobGroup;
+        return this;
+    }
+
+    public QuartzTriggers description(final String description) {
+        this.description = description;
+        return this;
+    }
+
+    public QuartzTriggers nextFireTime(final Long nextFireTime) {
+        this.nextFireTime = nextFireTime;
+        return this;
+    }
+
+    public QuartzTriggers prevFireTime(final Long prevFireTime) {
+        this.prevFireTime = prevFireTime;
+        return this;
+    }
+
+    public QuartzTriggers priority(final Integer priority) {
+        this.priority = priority;
         return this;
     }
 
@@ -103,134 +120,31 @@ public class QuartzTriggers {
         return this;
     }
 
-
-    public String getSchedulerName() {
-        return schedulerName;
-    }
-
-    public void setSchedulerName(String schedulerName) {
-        this.schedulerName = schedulerName;
-    }
-
-    public String getTriggerName() {
-        return triggerName;
-    }
-
-    public void setTriggerName(String triggerName) {
-        this.triggerName = triggerName;
-    }
-
-    public String getTriggerGroup() {
-        return triggerGroup;
-    }
-
-    public void setTriggerGroup(String triggerGroup) {
-        this.triggerGroup = triggerGroup;
-    }
-
-    public String getJobName() {
-        return jobName;
-    }
-
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
-    }
-
-    public String getJobGroup() {
-        return jobGroup;
-    }
-
-    public void setJobGroup(String jobGroup) {
-        this.jobGroup = jobGroup;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getNextFireTime() {
-        return nextFireTime;
-    }
-
-    public void setNextFireTime(Long nextFireTime) {
-        this.nextFireTime = nextFireTime;
-    }
-
-    public Long getPrevFireTime() {
-        return prevFireTime;
-    }
-
-    public void setPrevFireTime(Long prevFireTime) {
-        this.prevFireTime = prevFireTime;
-    }
-
-    public Integer getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Integer priority) {
-        this.priority = priority;
-    }
-
-    public String getTriggerState() {
-        return triggerState;
-    }
-
-    public void setTriggerState(String triggerState) {
-        this.triggerState = triggerState;
-    }
-
-    public String getTriggerType() {
-        return triggerType;
-    }
-
-    public void setTriggerType(String triggerType) {
-        this.triggerType = triggerType;
-    }
-
-    public Long getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Long startTime) {
+    public QuartzTriggers startTime(final Long startTime) {
         this.startTime = startTime;
+        return this;
     }
 
-    public Long getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Long endTime) {
+    public QuartzTriggers endTime(final Long endTime) {
         this.endTime = endTime;
+        return this;
     }
 
-    public String getCalendarName() {
-        return calendarName;
-    }
-
-    public void setCalendarName(String calendarName) {
+    public QuartzTriggers calendarName(final String calendarName) {
         this.calendarName = calendarName;
+        return this;
     }
 
-    public Integer getMisfireInstr() {
-        return misfireInstr;
-    }
-
-    public void setMisfireInstr(Integer misfireInstr) {
+    public QuartzTriggers misfireInstr(final Integer misfireInstr) {
         this.misfireInstr = misfireInstr;
+        return this;
     }
 
-    public byte[] getJobDate() {
-        return jobDate;
-    }
-
-    public void setJobDate(byte[] jobDate) {
+    public QuartzTriggers jobDate(final byte[] jobDate) {
         this.jobDate = jobDate;
+        return this;
     }
+
 
     @Override
     public boolean equals(Object o) {
