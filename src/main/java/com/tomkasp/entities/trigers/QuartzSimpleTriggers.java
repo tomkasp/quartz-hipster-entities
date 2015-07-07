@@ -33,4 +33,33 @@ public class QuartzSimpleTriggers {
     @Column(name = "TIMES_TRIGGERED")
     private Long timesTriggered;
 
+    public QuartzSimpleTriggers schedulerName(final String schedulerName) {
+        this.schedulerName = schedulerName;
+        return this;
+    }
+
+    public QuartzSimpleTriggers triggerName(final String triggerName) {
+        this.triggerName = triggerName;
+        return this;
+    }
+
+    public QuartzSimpleTriggers triggerGroup(final String triggerGroup) {
+        this.triggerGroup = triggerGroup;
+        return this;
+    }
+
+    public QuartzSimpleTriggers repeatCount(final Long repeatCount) {
+        this.repeatCount = repeatCount;
+        return this;
+    }
+
+    public QuartzSimpleTriggers repeatInterval(final Long repeatInterval) {
+        this.repeatInterval = repeatInterval;
+        return this;
+    }
+
+    public QuartzSimpleTriggers timesTriggered(final Long timesTriggered) {
+        this.timesTriggered = timesTriggered;
+        return this;
+    }
 }

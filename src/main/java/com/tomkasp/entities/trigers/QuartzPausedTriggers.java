@@ -20,4 +20,15 @@ public class QuartzPausedTriggers {
     @Column(name = "TRIGGER_GROUP")
     private String triggerGroup;
 
+    public QuartzPausedTriggers schedulerName(final String schedulerName) {
+        this.schedulerName = schedulerName;
+        return this;
+    }
+
+    public QuartzPausedTriggers triggerGroup(final String triggerGroup) {
+        this.triggerGroup = triggerGroup;
+        return this;
+    }
+
+
 }

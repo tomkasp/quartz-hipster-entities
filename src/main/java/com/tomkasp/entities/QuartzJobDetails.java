@@ -44,5 +44,3 @@ public class QuartzJobDetails extends ResourceSupport {
     private byte[] jobData;
 
 }
-
-//JOB_DATA IMAGE NULL
