@@ -26,9 +26,6 @@ import java.util.Properties;
 @PropertySource("classpath:quartz.properties")
 public class QuartzConfig implements EnvironmentAware{
 
-
-    //TODO move quartz scheduler name to external property
-    public static final String SCHEDULER_NAME = "quartzScheduler";
     static final Logger LOG = LoggerFactory.getLogger(QuartzConfig.class);
 
     private RelaxedPropertyResolver propertyResolver;
