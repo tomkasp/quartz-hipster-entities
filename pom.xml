@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>quartz-hipster-entities</name>
-    <description>quartz-hipster-entites</description>
+    <description>quartz-hipster-entities</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -28,6 +28,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>

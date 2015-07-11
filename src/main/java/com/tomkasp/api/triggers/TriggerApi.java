@@ -1,8 +1,6 @@
 package com.tomkasp.api.triggers;
 
 import com.tomkasp.api.SchedulerApi;
-import com.tomkasp.api.TriggersEntityApi;
-import com.tomkasp.entities.SchedulerState;
 import com.tomkasp.entities.trigers.QuartzTriggers;
 import com.tomkasp.entities.trigers.QuartzTriggersId;
 import com.tomkasp.repository.QuartzTriggersRepository;

@@ -1,8 +1,7 @@
-package com.tomkasp.api;
+package com.tomkasp.api.triggers;
 
 import com.tomkasp.entities.trigers.*;
 import com.tomkasp.repository.*;
-import com.wordnik.swagger.annotations.ApiOperation;
 import org.quartz.SchedulerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,25 +18,20 @@ public class TriggersEntityApi {
     static final Logger LOG = LoggerFactory.getLogger(TriggersEntityApi.class);
 
     private final QuartzFiredTriggersRepository quartzFiredTriggersRepository;
-    private final QuartzTriggersRepository quartzTriggersRepository;
     private final QuartzCronTriggersRepository quartzCronTriggersRepository;
     private final QuartzSimpleTriggerRepository quartzSimpleTriggerRepository;
     private final QuartzBlobTriggerRepository quartzBlobTriggerRepository;
     private final QuartzPausedTriggersRepository quartzPausedTriggersRepository;
 
     @Autowired
-    public TriggersEntityApi(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzTriggersRepository quartzTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository, QuartzBlobTriggerRepository quartzBlobTriggerRepository, QuartzPausedTriggersRepository quartzPausedTriggersRepository) {
+    public TriggersEntityApi(QuartzFiredTriggersRepository quartzFiredTriggersRepository, QuartzCronTriggersRepository quartzCronTriggersRepository, QuartzSimpleTriggerRepository quartzSimpleTriggerRepository, QuartzBlobTriggerRepository quartzBlobTriggerRepository, QuartzPausedTriggersRepository quartzPausedTriggersRepository) {
         this.quartzFiredTriggersRepository = quartzFiredTriggersRepository;
-        this.quartzTriggersRepository = quartzTriggersRepository;
         this.quartzCronTriggersRepository = quartzCronTriggersRepository;
         this.quartzSimpleTriggerRepository = quartzSimpleTriggerRepository;
         this.quartzBlobTriggerRepository = quartzBlobTriggerRepository;
         this.quartzPausedTriggersRepository = quartzPausedTriggersRepository;
     }
 
-
-
-    @ApiOperation(value = "Currently running trigger")
     @RequestMapping(value = "/fired", method = RequestMethod.GET)
     public List<QuartzFiredTriggers> getAllFiredTriggers() {
         return quartzFiredTriggersRepository.findAll();
