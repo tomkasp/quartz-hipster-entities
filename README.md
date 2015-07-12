@@ -17,10 +17,11 @@ Main functionality of it can be divided into 3 different sections. Let me explai
 
 Ok, but how to use it? 
 
-You just need to add library as a dependency and basically that's it. When it is a dependency to your project spring will
+You just need to add library as a dependency. Next you need to enable it somewhere within your project with 
+@EnableQuartzHipster annotation on one of your Configuration classes. When it is a dependency to your project spring will
 automatically try to scan CLASSPATH and and create all entities with quartz tables and beans defined inside 
 com.tomkasp.config.QuartzConfig Your project needs to have only quartz.properties file with quartz configuration and 
-somewhere inside your project you also need to define a property org.quartz.scheduler.name 
+somewhere inside your project you also need to define a property org.quartz.scheduler.name with the name of your scheduler. 
 
 Few more words of explanation. 
 
@@ -28,6 +29,11 @@ I used spring boot as a kind of template for the app. I leverage mainly spring s
 com.tomkasp.repository you can find repositories created for the defined entities. If you would like to now how it works 
 you can read it here: http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
 
+
+## Examples
+
+To see how the library runs in real example you can visit examples:
+https://github.com/tomkasp/quartz-hipster-entities-example
 
 ## What is next?
 
