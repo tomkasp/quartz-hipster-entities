@@ -1,4 +1,7 @@
-# quartz-hipster-entities
+# Quartz Hipster Entities
+
+![Quartz hipster Logo](/quartzhipsterentitieslogo.png)
+Format: ![Alt Text](url)
 
 ----------------------------------------------------
 
