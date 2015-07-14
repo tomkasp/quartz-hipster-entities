@@ -1,8 +1,13 @@
-![Quartz hipster Logo](/quartzhipsterentitieslogo.png)
-
 # Quartz Hipster Entities
 ----------------------------------------------------
 
+## Project health
+[![Build Status](https://travis-ci.org/tomkasp/quartz-hipster-entities.svg?branch=master)]
+(https://travis-ci.org/tomkasp/quartz-hipster-entities) 
+
+![Quartz hipster Logo](/quartzhipsterentitieslogo.png)
+
+## Big picture
 Main purpose of this simple, small library is to make your life easier when it comes to work with Quartz framework. 
 
 Main functionality of it can be divided into 3 different sections. Let me explain all of them.
@@ -15,6 +20,7 @@ Main functionality of it can be divided into 3 different sections. Let me explai
    
 3. Library provides simple Rest API which can be used to retrieve the data from the database and return it as a JSON
 
+## How to
 
 Ok, but how to use it? 
 
