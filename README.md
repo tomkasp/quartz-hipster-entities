@@ -1,8 +1,6 @@
-# Quartz Hipster Entities
-
 ![Quartz hipster Logo](/quartzhipsterentitieslogo.png)
-Format: ![Alt Text](url)
 
+# Quartz Hipster Entities
 ----------------------------------------------------
 
 Main purpose of this simple, small library is to make your life easier when it comes to work with Quartz framework. 
