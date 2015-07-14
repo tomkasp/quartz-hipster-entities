@@ -1,10 +1,11 @@
 # Quartz Hipster Entities
 ----------------------------------------------------
 
-## Project health
+#### Project health
 [![Build Status](https://travis-ci.org/tomkasp/quartz-hipster-entities.svg?branch=master)]
 (https://travis-ci.org/tomkasp/quartz-hipster-entities) 
 
+#### Logo
 ![Quartz hipster Logo](/quartzhipsterentitieslogo.png)
 
 ## Big picture
