@@ -11,9 +11,9 @@
 ## Big picture
 Main purpose of this simple, small library is to make your life easier when it comes to work with Quartz framework. 
 
-Main functionality of it can be divided into 3 different sections. Let me explain all of them.
+Main functionality can be divided into 3 sections. Let me explain each of them.
  
-1. First under entities package there are defined all tables which quartz framework uses. 
+1. First under entities package are defined all tables which quartz framework uses. 
    You can reuse them or access through CrudRepositories from a repository package. 
    
 2. Library contains pre defined quartz configuration inside QuzrtzConifg class. You just need to add jar file with 
@@ -25,7 +25,7 @@ Main functionality of it can be divided into 3 different sections. Let me explai
 
 Ok, but how to use it? 
 
-You just need to add library as a dependency. Next you need to enable it somewhere within your project with 
+The only thing you need is to add library as a dependency. Next you need to enable it somewhere within your project with 
 @EnableQuartzHipster annotation on one of your Configuration classes. When it is a dependency to your project spring will
 automatically try to scan CLASSPATH and and create all entities with quartz tables and beans defined inside 
 com.tomkasp.config.QuartzConfig Your project needs to have only quartz.properties file with quartz configuration and 
